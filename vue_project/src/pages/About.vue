@@ -1,45 +1,53 @@
 <template>
-<div class = "about-wrapper">
-  <pageTitle title="About"></pageTitle>
-  <div class="self-introduction">
-    <table>
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <td>岸 直輝 (Naoki Kishi)</td>
-        </tr>
-        <tr>
-          <th>University</th>
-          <td>京都大学 工学部 電気電子工学科</td>
-        </tr>
-        <tr>
-          <th>Birthday</th>
-          <td>1998/11/24</td>
-        </tr>
-        <tr>
-          <th>GitHub</th>
-          <td><a href="https://github.com/naoki-kishi" target="_blank">naoki-kishi</a></td>
-        </tr>
-        <tr>
-          <th>Qiita</th>
-          <td><a href="https://qiita.com/plus_kyoto" target="_blank">plus_kyoto</a></td>
-        </tr>
-        <tr>
-          <th>Twitter</th>
-          <td><a href="https://twitter.com/plus_kyoto" target="_blank">@plus_kyoto</a></td>
-        </tr>
-        <tr>
-          <th>Blog</th>
-          <td><a href="https://plus-blog.hatenablog.com" target="_blank">一人前のエンジニアになれますか？</a></td>
-        </tr>
-        <tr>
-          <th>Mail</th>
-          <td>naokikishi.kyoto[at]gmail.com</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="about-wrapper">
+    <pageTitle title="About"></pageTitle>
+    <div class="self-introduction">
+      <table>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td>岸 直輝 (Naoki Kishi)</td>
+          </tr>
+          <tr>
+            <th>University</th>
+            <td>京都大学 工学部 電気電子工学科</td>
+          </tr>
+          <tr>
+            <th>Birthday</th>
+            <td>1998/11/24</td>
+          </tr>
+          <tr>
+            <th>GitHub</th>
+            <td>
+              <a href="https://github.com/naoki-kishi" target="_blank">naoki-kishi</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Qiita</th>
+            <td>
+              <a href="https://qiita.com/plus_kyoto" target="_blank">plus_kyoto</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Twitter</th>
+            <td>
+              <a href="https://twitter.com/plus_kyoto" target="_blank">@plus_kyoto</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Blog</th>
+            <td>
+              <a href="https://plus-blog.hatenablog.com" target="_blank">一人前のエンジニアになれますか？</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Mail</th>
+            <td>naokikishi.kyoto[at]gmail.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -51,15 +59,15 @@ export default {
   components: {
     pageTitle
   },
-  data() {
+  data () {
     return {}
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/_color.scss';
-@import '@/assets/styles/_mixin.scss';
+@import "@/assets/styles/_color.scss";
+@import "@/assets/styles/_mixin.scss";
 
 .about-wrapper {
   text-align: center;

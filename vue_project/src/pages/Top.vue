@@ -1,22 +1,18 @@
 <template>
-    <div class='hello'>
-      <h1>{{ msg }}</h1>
-
-      <div class = "share">
-        <h3>Share</h3>
-
-        <div class = 'share-buttons'>
-          <a href="http://twitter.com/share?url=https://naoki-kishi.github.io&text=Naoki Kishi's Portfolio Site&via=plus_kyoto" target='_blank'>
-            <div class='button fa fa-twitter'>
-            </div>
-          </a>
-          <a href="http://www.facebook.com/sharer.php?u=https://naoki-kishi.github.io" target='_blank'>
-            <div class='button fa fa-facebook'>
-            </div>
-          </a>
-        </div>
+  <div class="hello">
+    <h1>{{ msg }}</h1>
+    <div class="share">
+      <h3>Share</h3>
+      <div class="share-buttons">
+        <a href>
+          <div class="button fa fa-twitter"></div>
+        </a>
+        <a href>
+          <div class="button fa fa-facebook"></div>
+        </a>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -25,7 +21,7 @@ export default {
   title: ' ',
   data () {
     return {
-      msg: "Welcome to Naoki Kishi's Portfolio Site"
+      msg: '初めまして。\nここは城阪拓哉のPortfolio Siteです。\n使用言語や業務経歴の掲載を行います。'
     }
   }
 }
@@ -33,18 +29,20 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
-@import '@/assets/styles/_color.scss';
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+@import "@/assets/styles/_color.scss";
 
 .hello {
-  height: 93vh;
+  height: 100vh;
   position: relative;
   background: linear-gradient(to left, $main-color-1 0%, $main-color-2 100%);
   text-align: center;
 }
 
 h1 {
-  padding-top: 40vh;
+  white-space:pre-wrap;
+  text-align: left;
+  padding-top: 10vh;
   font-size: 50px;
   color: white;
   letter-spacing: 3px;
@@ -70,6 +68,7 @@ h3 {
   right: 0px;
   display: block;
 }
+
 .button {
   width: 100px;
   height: 100px;
@@ -111,7 +110,6 @@ h3 {
       $main-color-2 100%
     );
   }
-
   .share {
     position: relative;
   }
@@ -119,7 +117,6 @@ h3 {
     padding-top: 10vh;
     font-size: 30px;
   }
-
   h3 {
     margin-top: 100px;
     margin-bottom: 10px;
@@ -129,7 +126,6 @@ h3 {
     height: 70px;
     border-radius: 70px;
   }
-
   .fa {
     line-height: 70px;
   }
