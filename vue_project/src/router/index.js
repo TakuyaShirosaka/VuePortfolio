@@ -12,10 +12,6 @@ let router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '*',
-      redirect: '/'
-    },
-    {
       path: '/top',
       name: 'Top',
       component: Top,
