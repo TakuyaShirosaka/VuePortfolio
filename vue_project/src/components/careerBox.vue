@@ -24,13 +24,13 @@ export default {
 
 .box {
   @include box-shadow;
-  @include box(500px, 450px);
+  @include box(500px, 250px);
   padding: 5px;
 }
 
 @media (max-width: 1000px) {
   .box {
-    @include box-smartphone(260px, 500px);
+    @include box-smartphone(260px, 300px);
   }
 }
 
@@ -46,5 +46,11 @@ h2 {
 
 .sub-content {
   @include box-sub-content;
+}
+
+@media (max-width: 670px) {
+  .box {
+    @include box-smartphone(260px, 320px);
+  }
 }
 </style>

@@ -1,19 +1,31 @@
 <template>
   <div id="app">
-    <div id="SideBar">
-      <mySideBar></mySideBar>
+    <div id="signin" v-if="login == 'false'">
+      <h2>Sign In</h2>
+      <p>
+        <input type="text" placeholder="Email" v-model="email">
+      </p>
+      <p>
+        <input type="password" placeholder="Password" v-model="password">
+      </p>
+      <button @click="signIn">Sign In</button>
     </div>
-    <div id="main">
-      <transition name="page-fade" mode="out-in">
-        <router-view/>
-      </transition>
+    <div id="content" v-if="login == 'true'">
+      <div id="SideBar">
+        <mySideBar></mySideBar>
+      </div>
+      <div id="main">
+        <transition name="page-fade" mode="out-in">
+          <router-view/>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import myHeader from './components/myHeader'
 import mySideBar from './components/mySideBar'
+import firebase from 'firebase'
 import WebFont from 'webfontloader'
 
 WebFont.load({
@@ -44,21 +56,81 @@ WebFont.load({
 export default {
   name: 'App',
   components: {
-    myHeader,
     mySideBar
+  },
+  data () {
+    return {
+      email: '',
+      password: '',
+      login: 'false'
+    }
+  },
+  created () {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in.
+        console.log('User is signed in.')
+        this.login = 'true'
+      } else {
+        console.log('User is none.')
+        this.login = 'false'
+      }
+    })
+  },
+  methods: {
+    signIn () {
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(e => {
+        console.log(e)
+        this.$router.push('/top')
+        this.login = 'true'
+      }).catch((error) => {
+        var errorMessage = error.message
+        console.log('エラーメッセージ', errorMessage)
+        alert(errorMessage)
+        this.$router.push('/')
+        this.login = 'false'
+      })
+    }
+  },
+  watch: {
+    login: function () {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          // User is signed in.
+          this.login = 'true'
+        } else {
+          // No user is signed in.
+          this.$router.push('/')
+          this.login = 'false'
+        }
+      })
+    }
   }
 }
 </script>
 
 <style lang='scss'>
 @import "@/assets/styles/_color.scss";
+@import "@/assets/styles/_mixin.scss";
 
+.html {
+  overflow-x: hidden;
+}
 #app {
   font-family: "Noto Sans Japanese";
 }
 
+#app #signin {
+  text-align: center;
+  float: center;
+}
+
 body {
   margin: 0px;
+}
+
+input {
+  width: 20%;
 }
 
 #main {
@@ -87,5 +159,17 @@ body {
 .page-fade-enter,
 .page-fade-leave-to {
   opacity: 0;
+}
+
+/* スマートフォン */
+@media (max-width: 670px) {
+  #main {
+    width: 80% !important;
+    padding-left: 20%;
+  }
+
+  #SideBar {
+    width: 20% !important;
+  }
 }
 </style>

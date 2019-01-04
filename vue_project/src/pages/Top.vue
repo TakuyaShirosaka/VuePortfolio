@@ -4,11 +4,8 @@
     <div class="share">
       <h3>Share</h3>
       <div class="share-buttons">
-        <a href>
-          <div class="button fa fa-twitter"></div>
-        </a>
-        <a href>
-          <div class="button fa fa-facebook"></div>
+        <a href="https://github.com/TakuyaShirosaka" target="_blank">
+          <div class="button fa fa-github"></div>
         </a>
       </div>
     </div>
@@ -21,7 +18,7 @@ export default {
   title: ' ',
   data () {
     return {
-      msg: '初めまして。\nここは城阪拓哉のPortfolio Siteです。\n使用言語や業務経歴の掲載を行います。'
+      msg: '初めまして。\nここは城阪拓哉の\nPortfolio Siteです。\n普段使用する言語や\n業務経歴の紹介をします。'
     }
   }
 }
@@ -40,7 +37,7 @@ export default {
 }
 
 h1 {
-  white-space:pre-wrap;
+  white-space: pre-wrap;
   text-align: left;
   padding-top: 10vh;
   font-size: 50px;
@@ -90,20 +87,10 @@ h3 {
   line-height: 100px;
 }
 
-/* タブレット */
-@media (max-width: 1000px) {
-  .hello {
-    height: 88vh;
-  }
-  h1 {
-    padding-top: 30vh;
-    font-size: 40px;
-  }
-}
 /* スマートフォン */
 @media (max-width: 670px) {
   .hello {
-    height: 82vh;
+    height: 200vh;
     background: linear-gradient(
       to bottom,
       $main-color-1 0%,
@@ -115,7 +102,7 @@ h3 {
   }
   h1 {
     padding-top: 10vh;
-    font-size: 30px;
+    font-size: 15px;
   }
   h3 {
     margin-top: 100px;

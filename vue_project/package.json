@@ -14,6 +14,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "firebase": "^5.7.2",
+    "firebaseui": "^3.5.1",
     "vue": "^2.5.21",
     "vue-analytics": "^5.16.1",
     "vue-head": "^2.1.0",
