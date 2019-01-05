@@ -16,31 +16,31 @@ let router = new Router({
       path: '/top',
       name: 'Top',
       component: Top,
-      meta: {requiresAuth: true}
+      meta: { requiresAuth: true }
     },
     {
       path: '/about',
       name: 'About',
       component: About,
-      meta: {requiresAuth: true}
+      meta: { requiresAuth: true }
     },
     {
       path: '/languages',
       name: 'Languages',
       component: Languages,
-      meta: {requiresAuth: true}
+      meta: { requiresAuth: true }
     },
     {
       path: '/career',
       name: 'Career',
       component: Career,
-      meta: {requiresAuth: true}
+      meta: { requiresAuth: true }
     },
     {
       path: '/works',
       name: 'Works',
       component: Works,
-      meta: {requiresAuth: true}
+      meta: { requiresAuth: true }
     }
   ]
 })
@@ -53,6 +53,11 @@ router.beforeEach((to, from, next) => {
       if (!user) {
         next({
           path: '/',
+          query: { redirect: to.fullPath }
+        })
+      } else {
+        next({
+          path: '/top',
           query: { redirect: to.fullPath }
         })
       }
