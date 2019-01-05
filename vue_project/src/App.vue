@@ -54,15 +54,14 @@ export default {
       login: 'false'
     }
   },
-  created () {
+  mounted () {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        // User is signed in.
-        console.log('User is signed in.')
         this.login = 'true'
+        this.$router.push('/top')
       } else {
-        console.log('User is none.')
         this.login = 'false'
+        this.$router.push('/')
       }
     })
   },
