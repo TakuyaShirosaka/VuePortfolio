@@ -11,6 +11,7 @@
 <script>
 import pageTitle from '@/components/pageTitle'
 import box from '@/components/careerBox'
+import firebase from 'firebase'
 
 export default {
   name: 'Languages',
@@ -21,54 +22,26 @@ export default {
   },
   data () {
     return {
-      languages: [
-        {
-          name: 'Java',
-          content:
-            'これまでの業務の中では一番使用頻度の高い言語です。\nバージョンはJava6～8を使用しました。\nDBはOracleだったりそうでなかったりします。'
-        },
-        {
-          name: 'VisualBasic(.Net、6.0)',
-          content:
-            'デスクトップアプリやハンディのアプリの開発で使用しました。\n開発用のツールはVBAで書いたりもします。'
-        },
-        {
-          name: 'Kotlin',
-          content:
-            '個人でJavaの代わりに使用を始めました。(KotlinMessangerで使用)\n主にAndroidやFirebase、AWS Lambdaで使用しています。\nOracleからAdoptOpenJDKに切り替え中です。'
-        },
-        {
-          name: 'HTML & SCSS',
-          content:
-            '業務でMockを作成するのに使用したり、\n本サイトを作成するにあたり使用しています。'
-        },
-        {
-          name: 'JavaScript',
-          content:
-            '業務では生JavaScriptやJQuery、\n個人ではVue.js(このサイトの作成で使用)・GAS・React.jsなどをメインに使用しました。'
-        },
-        {
-          name: 'Golang',
-          content:
-            'こちらは業務経験もなく、\n個人でも何か形のあるものはありませんが\n勉強会の場で知ってから独学を続けております。'
-        },
-        {
-          name: 'AWS',
-          content:
-            '業務ではなく個人で使用、S3・Cognito・ApiGateWay・Lambda・DynamoDBの使用経験があります。'
-        },
-        {
-          name: 'COBOL',
-          content:
-            '同年代ではあまり開発経験のある人はいません。\nそういう意味では貴重な経験を持っています。'
-        },
-        {
-          name: 'Japanese',
-          content:
-            '一番なじみが深い言語です。この言語に関してはビジネスレベルであるといっても過言ではありません。'
-        }
-      ]
+      languages: []
     }
+  },
+  mounted () {
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        this.$router.push('/')
+      } else {
+        const uid = user.uid
+        const db = firebase.database()
+        const dbProfileRef = db.ref('Languages/' + uid)
+        dbProfileRef.on('value', snapshot => {
+          snapshot.forEach((data) => {
+            this.languages.push(
+              { name: data.key, content: data.val().content }
+            )
+          })
+        })
+      }
+    })
   }
 }
 </script>
@@ -89,7 +62,7 @@ export default {
   .languages {
     font-size: 12px;
   }
-  h3{
+  h3 {
     font-size: 12px;
   }
 }
