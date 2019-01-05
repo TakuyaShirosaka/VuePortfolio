@@ -86,7 +86,7 @@ a {
 /* スマートフォン */
 @media (max-width: 670px) {
   .works {
-    font-size: 15px;
+    font-size: 12px;
   }
 }
 </style>

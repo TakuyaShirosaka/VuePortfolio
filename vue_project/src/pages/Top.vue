@@ -102,7 +102,7 @@ h3 {
   }
   h1 {
     padding-top: 10vh;
-    font-size: 15px;
+    font-size: 12px;
   }
   h3 {
     margin-top: 100px;
