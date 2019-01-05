@@ -1,15 +1,6 @@
 <template>
   <div id="app">
-    <div id="signin" v-if="login == 'false'">
-      <h2>Sign In</h2>
-      <p>
-        <input type="text" placeholder="Email" v-model="email">
-      </p>
-      <p>
-        <input type="password" placeholder="Password" v-model="password">
-      </p>
-      <button @click="signIn">Sign In</button>
-    </div>
+    <SignIn v-if="login == 'false'"></SignIn>
     <div id="content" v-if="login == 'true'">
       <div id="SideBar">
         <mySideBar></mySideBar>
@@ -25,6 +16,7 @@
 
 <script>
 import mySideBar from './components/mySideBar'
+import SignIn from './components/signIn'
 import firebase from 'firebase'
 import WebFont from 'webfontloader'
 WebFont.load({
@@ -54,12 +46,11 @@ WebFont.load({
 export default {
   name: 'App',
   components: {
-    mySideBar
+    mySideBar,
+    SignIn
   },
   data () {
     return {
-      email: '',
-      password: '',
       login: 'false'
     }
   },
@@ -74,25 +65,6 @@ export default {
         this.login = 'false'
       }
     })
-  },
-  methods: {
-    signIn () {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(e => {
-          console.log(e)
-          this.$router.push('/top')
-          this.login = 'true'
-        })
-        .catch(error => {
-          var errorMessage = error.message
-          console.log('エラーメッセージ', errorMessage)
-          alert(errorMessage)
-          this.$router.push('/')
-          this.login = 'false'
-        })
-    }
   },
   watch: {
     login: function () {
