@@ -113,7 +113,10 @@ export default {
 /* スマートフォン */
 @media (max-width: 670px) {
   .tools {
-    font-size: 15px;
+    font-size: 12px;
+  }
+  h3 {
+    font-size: 12px;
   }
 }
 </style>

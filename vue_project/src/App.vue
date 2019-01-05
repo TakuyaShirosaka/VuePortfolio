@@ -27,7 +27,6 @@
 import mySideBar from './components/mySideBar'
 import firebase from 'firebase'
 import WebFont from 'webfontloader'
-
 WebFont.load({
   custom: {
     families: ['Noto Sans Japanese'],
@@ -52,7 +51,6 @@ WebFont.load({
     console.log('fontinactive', familyName, fvd)
   }
 })
-
 export default {
   name: 'App',
   components: {
@@ -79,17 +77,21 @@ export default {
   },
   methods: {
     signIn () {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(e => {
-        console.log(e)
-        this.$router.push('/top')
-        this.login = 'true'
-      }).catch((error) => {
-        var errorMessage = error.message
-        console.log('エラーメッセージ', errorMessage)
-        alert(errorMessage)
-        this.$router.push('/')
-        this.login = 'false'
-      })
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(e => {
+          console.log(e)
+          this.$router.push('/top')
+          this.login = 'true'
+        })
+        .catch(error => {
+          var errorMessage = error.message
+          console.log('エラーメッセージ', errorMessage)
+          alert(errorMessage)
+          this.$router.push('/')
+          this.login = 'false'
+        })
     }
   },
   watch: {
@@ -112,46 +114,38 @@ export default {
 <style lang='scss'>
 @import "@/assets/styles/_color.scss";
 @import "@/assets/styles/_mixin.scss";
-
 .html {
   overflow-x: hidden;
 }
 #app {
   font-family: "Noto Sans Japanese";
 }
-
 #app #signin {
   text-align: center;
   float: center;
 }
-
 body {
   margin: 0px;
 }
-
 input {
   width: 20%;
 }
-
 #main {
   float: center;
   padding-top: 0px;
   padding-left: 180px;
 }
-
 #SideBar {
   transition: width 0.28s;
   width: 180px !important;
   height: 100%;
   position: fixed;
-  font-size: 0;
   top: 0;
   bottom: 0;
   left: 0;
   z-index: 1001;
   overflow: hidden;
 }
-
 .page-fade-enter-active,
 .page-fade-leave-active {
   transition: opacity 0.3s ease;
@@ -160,16 +154,21 @@ input {
 .page-fade-leave-to {
   opacity: 0;
 }
-
 /* スマートフォン */
 @media (max-width: 670px) {
   #main {
     width: 80% !important;
     padding-left: 20%;
   }
-
   #SideBar {
     width: 20% !important;
+  }
+  #app #signin {
+    text-align: center;
+    float: center;
+  }
+  input {
+    width: 60%;
   }
 }
 </style>

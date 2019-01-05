@@ -124,7 +124,7 @@ a {
 
   td {
     display: block;
-    font-size: 15px;
+    font-size: 12px;
   }
 }
 </style>
