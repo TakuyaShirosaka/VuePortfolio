@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <th>Mail</th>
-            <td>職務経歴書/職務経歴書に記載</td>
+            <td>職務経歴書/業務経歴書に記載</td>
           </tr>
         </tbody>
       </table>
